@@ -8,7 +8,7 @@
 * [License](#license)
 * [Contributing](#contributing)
 * [Tests](#tests)
-* [Acknowledgments](#acknowledgements)
+* [Acknowledgments](#acknowledgments)
 * [Questions](#questions)
     
 ## Description
