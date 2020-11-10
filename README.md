@@ -25,7 +25,9 @@ To use this project:
 <ol>      
    <li>Clone the repository: "git@github.com:aubrey-heim/Employee-Summary.git"</li>
    <li>Install the dependencies using “npm i”</li><li>Navigate into the Develop folder using “cd Develop”</li>
-   <li> Run the program using “node app.js” on the command line</li><li> Answer the prompts to generate your webpage.</li>
+   <li> Run the program using “node app.js” on the command line</li>
+   <li> Answer the prompts to generate your webpage.</li>
+   <li>HTML file will be created in the "output" folder.</li>
 </ol>
 
 ## License
