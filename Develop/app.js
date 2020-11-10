@@ -125,7 +125,7 @@ function makeNewEmployee(){
             .prompt ([
                 {
                     type: "input",
-                    message: "What is your GitHub username?",
+                    message: "What is their GitHub username?",
                     name: "github"
                 },
             ]).then(function(response){
@@ -156,7 +156,10 @@ function makeNewEmployee(){
                 })
             });
             
-        }; 
+        } else {
+            console.log("Employee role not recogized. Please try again.")
+            makeNewEmployee()
+        }
     });
 }
 
