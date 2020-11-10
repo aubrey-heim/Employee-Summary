@@ -10,118 +10,157 @@ const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./lib/htmlRenderer");
 const Employee = require("./lib/Employee");
+const Choice = require("inquirer/lib/objects/choice");
 
 
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
 const employees = []
 
-inquirer
-.prompt ([
-    {
-        type: "input",
-        message: "What is your name?",
-        name: "name"
-    },
-    {
-        type: "input",
-        message: "What is your ID?",
-        name: "id"
-    },
-    {
-        type: "input",
-        message: "What is your email?",
-        name: "email"
-    },
-    {
-        type: "input",
-        message: "What is your role?",
-        name: "role"
-    },
-]).then(function(response){
-    const {name, id, email, role} = response
-    let newName = response.name;
-    let newId = response.id;
-    let newEmail = response.email;
-    let newRole = response.role
+function makeNewEmployee(){
+    inquirer
+    .prompt ([
+        {
+            type: "input",
+            message: "What is their name?",
+            name: "name"
+        },
+        {
+            type: "input",
+            message: "What is their ID?",
+            name: "id"
+        },
+        {
+            type: "input",
+            message: "What is their email?",
+            name: "email"
+        },
+        {
+            type: "input",
+            message: "What is their role?",
+            name: "role"
+        }
+    ]).then(function(response){
+        const {name, id, email, role} = response
+        let newName = response.name;
+        let newId = response.id;
+        let newEmail = response.email;
+        let newRole = response.role
 
-    if (newRole === "Manager" || newRole === "manager"){
-        inquirer
-        .prompt ([
-            {
-                type: "input",
-                message: "What is your office number?",
-                name: "officeNumber"
-            },
-        ]).then(function(response){
-            const{officeNumber} = response
-            let newEmployee = new Manager(newName, newId, newEmail, response.officeNumber)
-            employees.push(newEmployee)
-            const page = render(employees)
-            fs.writeFile("./output/team.html", page, function(err) {
-
-                if (err) {
-                    return console.log(err);
-                }
+        if (newRole === "Manager" || newRole === "manager"){
+            inquirer
+            .prompt ([
+                {
+                    type: "input",
+                    message: "What is their office number?",
+                    name: "officeNumber"
+                },
+            ]).then(function(response){
+                const {officeNumber} = response
+                let newEmployee = new Manager(newName, newId, newEmail, response.officeNumber)
+                employees.push(newEmployee)
+                inquirer
+                .prompt ([
+                    {
+                        type: "checkbox",
+                        message: "Would you like to add another employee?",
+                        name: "add",
+                        choices: ["yes", "no"]
+                    },
+                ]).then(function(response){
+                    const {add} = response
+                    if (response.add[0] === "yes"){
+                        makeNewEmployee()
+                    }else {
+                        const page = render(employees)
+                        fs.writeFile("./output/team.html", page, function(err) {
+                        if (err) {
+                            return console.log(err);
+                        }
+                        console.log("Success!");
+                })
+                    }
+                })
+                
+            });
             
-                console.log("Success!");
+        } else if (newRole === "Intern" || newRole === "intern"){
+            inquirer
+            .prompt ([
+                {
+                    type: "input",
+                    message: "What is your school?",
+                    name: "school"
+                },
+            ]).then(function(response){
+                const{school} = response
+                let newEmployee = new Intern(newName, newId, newEmail, response.school)
+                employees.push(newEmployee)
+                inquirer
+                .prompt ([
+                    {
+                        type: "checkbox",
+                        message: "Would you like to add another employee?",
+                        name: "add",
+                        choices: ["yes", "no"]
+                    },
+                ]).then(function(response){
+                    const {add} = response
+                    if (response.add[0] === "yes"){
+                        makeNewEmployee()
+                    }else {
+                        const page = render(employees)
+                        fs.writeFile("./output/team.html", page, function(err) {
+                        if (err) {
+                            return console.log(err);
+                        }
+                        console.log("Success!");
+                        })
+                    }
+                })
+            });
             
-            })
-        });
-        
-    } else if (newRole === "Intern" || newRole === "intern"){
-        inquirer
-        .prompt ([
-            {
-                type: "input",
-                message: "What is your school?",
-                name: "school"
-            },
-        ]).then(function(response){
-            const{school} = response
-            let newEmployee = new Intern(newName, newId, newEmail, response.school)
-            employees.push(newEmployee)
-            const page = render(employees)
-            fs.writeFile("./output/team.html", page, function(err) {
-
-                if (err) {
-                    return console.log(err);
-                }
+        } else if (newRole === "Engineer" || newRole === "engineer"){
+            inquirer
+            .prompt ([
+                {
+                    type: "input",
+                    message: "What is your GitHub username?",
+                    name: "github"
+                },
+            ]).then(function(response){
+                const{github} = response
+                let newEmployee = new Engineer(newName, newId, newEmail, response.github)
+                employees.push(newEmployee)
+                inquirer
+                .prompt ([
+                    {
+                        type: "checkbox",
+                        message: "Would you like to add another employee?",
+                        name: "add",
+                        choices: ["yes", "no"]
+                    },
+                ]).then(function(response){
+                    const {add} = response
+                    if (response.add[0] === "yes"){
+                        makeNewEmployee()
+                    }else {
+                        const page = render(employees)
+                        fs.writeFile("./output/team.html", page, function(err) {
+                        if (err) {
+                            return console.log(err);
+                        }
+                        console.log("Success!");
+                        })
+                    }
+                })
+            });
             
-                console.log("Success!");
-            
-            })
-        });
-        
-    } else if (newRole === "Engineer" || newRole === "engineer"){
-        inquirer
-        .prompt ([
-            {
-                type: "input",
-                message: "What is your GitHub username?",
-                name: "github"
-            },
-        ]).then(function(response){
-            const{github} = response
-            let newEmployee = new Engineer(newName, newId, newEmail, response.github)
-            employees.push(newEmployee)
-            const page = render(employees)
-            fs.writeFile("./output/team.html", page, function(err) {
+        }; 
+    });
+}
 
-                if (err) {
-                    return console.log(err);
-                }
-            
-                console.log("Success!");
-            
-            })
-        });
-        
-    }; 
-});
-
-
-
+makeNewEmployee()
 // After the user has input all employees desired, call the `render` function (required
 // above) and pass in an array containing all employee objects; the `render` function will
 // generate and return a block of HTML including templated divs for each employee!
