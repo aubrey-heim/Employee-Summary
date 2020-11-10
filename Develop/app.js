@@ -34,9 +34,8 @@ inquirer
         name: "email"
     },
     {
-        type: "checkbox",
+        type: "input",
         message: "What is your role?",
-        choices: ["Manager", "Engineer", "Intern"],
         name: "role"
     },
 ]).then(function(response){
@@ -44,9 +43,9 @@ inquirer
     let newName = response.name;
     let newId = response.id;
     let newEmail = response.email;
-    let newRole = response.role;
+    let newRole = response.role
 
-    if (role === "Manager"){
+    if (newRole === "Manager" || newRole === "manager"){
         inquirer
         .prompt ([
             {
@@ -58,9 +57,19 @@ inquirer
             const{officeNumber} = response
             let newEmployee = new Manager(newName, newId, newEmail, response.officeNumber)
             employees.push(newEmployee)
+            const page = render(employees)
+            fs.writeFile("./output/team.html", page, function(err) {
+
+                if (err) {
+                    return console.log(err);
+                }
+            
+                console.log("Success!");
+            
+            })
         });
         
-    } else if (role === "Intern"){
+    } else if (newRole === "Intern" || newRole === "intern"){
         inquirer
         .prompt ([
             {
@@ -72,9 +81,19 @@ inquirer
             const{school} = response
             let newEmployee = new Intern(newName, newId, newEmail, response.school)
             employees.push(newEmployee)
+            const page = render(employees)
+            fs.writeFile("./output/team.html", page, function(err) {
+
+                if (err) {
+                    return console.log(err);
+                }
+            
+                console.log("Success!");
+            
+            })
         });
         
-    } else if (role === "Engineer"){
+    } else if (newRole === "Engineer" || newRole === "engineer"){
         inquirer
         .prompt ([
             {
@@ -86,6 +105,16 @@ inquirer
             const{github} = response
             let newEmployee = new Engineer(newName, newId, newEmail, response.github)
             employees.push(newEmployee)
+            const page = render(employees)
+            fs.writeFile("./output/team.html", page, function(err) {
+
+                if (err) {
+                    return console.log(err);
+                }
+            
+                console.log("Success!");
+            
+            })
         });
         
     }; 
@@ -96,13 +125,11 @@ inquirer
 // After the user has input all employees desired, call the `render` function (required
 // above) and pass in an array containing all employee objects; the `render` function will
 // generate and return a block of HTML including templated divs for each employee!
-const html = render(employees)
 // After you have your html, you're now ready to create an HTML file using the HTML
 // returned from the `render` function. Now write it to a file named `team.html` in the
 // `output` folder. You can use the variable `outputPath` above target this location.
 // Hint: you may need to check if the `output` folder exists and create it if it
 // does not.
-
 // HINT: each employee type (manager, engineer, or intern) has slightly different
 // information; write your code to ask different questions via inquirer depending on
 // employee type.
