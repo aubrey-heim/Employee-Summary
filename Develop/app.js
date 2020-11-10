@@ -22,7 +22,7 @@ function makeNewEmployee(){
     .prompt ([
         {
             type: "input",
-            message: "What is their name?",
+            message: "What is the employee's name?",
             name: "name"
         },
         {
@@ -90,7 +90,7 @@ function makeNewEmployee(){
             .prompt ([
                 {
                     type: "input",
-                    message: "What is your school?",
+                    message: "What is their school's name?",
                     name: "school"
                 },
             ]).then(function(response){
