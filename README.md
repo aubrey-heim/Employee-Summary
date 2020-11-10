@@ -15,7 +15,8 @@
 This project is the tenth homework assignment of the UW Coding Bootcamp. For this project I was asked to create a an application using Node.js that would take in user input about various employees, and produce a webpage with information about all of the employees. This application was built with Object Oriented Programing. The various employee types were created using constructors, which inherited traits from the overall Employee class. Each of these classes also passed a set of predetermined tests which were provided by the UW Coding Bootcamp and run using the Jest npm package.
 
 ### Deployed Application
-<img src="deployed.gif" alt="gif of deployed page in use">
+<img src="./Assets/deployed.gif" alt="gif of deployed page in use">
+[View this video on Google Drive](https://drive.google.com/file/d/18b_rM0Hs6QG8BGyuuVO_5aA3ysoFNkMH/view)
 
 ## Installation
 To install necessary dependencies, run the following command: npm i
