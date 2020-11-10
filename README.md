@@ -8,6 +8,7 @@
 * [License](#license)
 * [Contributing](#contributing)
 * [Tests](#tests)
+* [Acknowledgments](#acknowledgements)
 * [Questions](#questions)
     
 ## Description
@@ -44,6 +45,15 @@ Also feel free to open issues for the project.
 
 ## Tests
 To run tests on this project, run the following command: npm run test
+
+## Acknowledgments
+Source code for user interface (templates, HTML render) and tests provided by the UW Full-Stack Web Development Bootcamp: https://uwa.bootcampcontent.com/UWA-Bootcamp/uw-sea-fsf-pt-08-2020-u-c. 
+
+Gif of deployed page created using Screencastify: https://www.screencastify.com/
+
+Jest npm package used for testing: https://www.npmjs.com/package/jest
+
+Inquirer npm package used for question prompts: https://www.npmjs.com/package/inquirer
 
 ## Questions
 If you have any questions, please contact Aubrey Heim.
