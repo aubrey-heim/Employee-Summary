@@ -36,18 +36,19 @@ function makeNewEmployee(){
             name: "email"
         },
         {
-            type: "input",
+            type: "checkbox",
             message: "What is their role?",
-            name: "role"
+            name: "role",
+            choices: ["Manager", "Engineer", "Intern"]
         }
     ]).then(function(response){
         const {name, id, email, role} = response
         let newName = response.name;
         let newId = response.id;
         let newEmail = response.email;
-        let newRole = response.role
+        let newRole = response.role[0]
 
-        if (newRole === "Manager" || newRole === "manager"){
+        if (newRole === "Manager"){
             inquirer
             .prompt ([
                 {
@@ -84,7 +85,7 @@ function makeNewEmployee(){
                 
             });
             
-        } else if (newRole === "Intern" || newRole === "intern"){
+        } else if (newRole === "Intern"){
             inquirer
             .prompt ([
                 {
@@ -120,7 +121,7 @@ function makeNewEmployee(){
                 })
             });
             
-        } else if (newRole === "Engineer" || newRole === "engineer"){
+        } else if (newRole === "Engineer"){
             inquirer
             .prompt ([
                 {
@@ -157,7 +158,7 @@ function makeNewEmployee(){
             });
             
         } else {
-            console.log("Employee role not recogized. Please try again.")
+            console.log("Employee role is required. Please try again.")
             makeNewEmployee()
         }
     });
