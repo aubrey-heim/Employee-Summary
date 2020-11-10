@@ -20,7 +20,12 @@ This project is the tenth homework assignment of the UW Coding Bootcamp. For thi
 To install necessary dependencies, run the following command: npm i
 
 ## Usage
-To use this project:<ol>      <li>Clone the repository: " git@github.com:aubrey-heim/Employee-Summary.git"</li><li>Install the dependencies using “npm i”</li><li>Navigate into the Develop folder using “cd Develop”</li><li> Run the program using “node app.js” on the command line</li><li> Answer the prompts to generate your webpage.</li></ol>
+To use this project:
+<ol>      
+   <li>Clone the repository: "git@github.com:aubrey-heim/Employee-Summary.git"</li>
+   <li>Install the dependencies using “npm i”</li><li>Navigate into the Develop folder using “cd Develop”</li>
+   <li> Run the program using “node app.js” on the command line</li><li> Answer the prompts to generate your webpage.</li>
+</ol>
 
 ## License
 This repository has a MIT license. For more information on this license, please visit: https://choosealicense.com/licenses/mit     
